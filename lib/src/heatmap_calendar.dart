@@ -18,6 +18,12 @@ class HeatMapCalendar extends StatefulWidget {
   /// Also colorsets must have at least one color.
   final Map<int, Color> colorsets;
 
+  /// The boolean value which makes the calendar simple.
+  final bool simpleMode;
+
+  /// The widget which shown at the top of the calendar.
+  final Widget? titleWidget;
+
   /// The double value of every block's borderRadius.
   final double? borderRadius;
 
@@ -109,6 +115,8 @@ class HeatMapCalendar extends StatefulWidget {
     this.colorTipHelper,
     this.colorTipCount,
     this.colorTipSize,
+    this.simpleMode = true,
+    this.titleWidget,
   }) : super(key: key);
 
   @override
@@ -213,14 +221,15 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          _header(),
-          _weekLabel(),
+          if (!widget.simpleMode) _header(),
+          if (!widget.simpleMode) _weekLabel(),
+          widget.titleWidget??Container(),
           HeatMapCalendarPage(
             baseDate: _currentDate ?? DateTime.now(),
             colorMode: widget.colorMode,
             flexible: widget.flexible,
             size: widget.size,
-            fontSize: widget.fontSize,
+            fontSize: widget.simpleMode ? 0: widget.fontSize,
             defaultColor: widget.defaultColor,
             textColor: widget.textColor,
             margin: widget.margin,
@@ -229,7 +238,7 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
             borderRadius: widget.borderRadius,
             onClick: widget.onClick,
           ),
-          if (widget.showColorTip == true)
+          if (widget.showColorTip == true && !widget.simpleMode)
             HeatMapColorTip(
               colorMode: widget.colorMode,
               colorsets: widget.colorsets,
