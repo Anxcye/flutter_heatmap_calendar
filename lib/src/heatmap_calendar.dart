@@ -93,6 +93,8 @@ class HeatMapCalendar extends StatefulWidget {
   /// The double value of [HeatMapColorTip]'s tip container's size.
   final double? colorTipSize;
 
+  final BoxBorder? blockBorder;
+
   const HeatMapCalendar({
     Key? key,
     required this.colorsets,
@@ -117,6 +119,7 @@ class HeatMapCalendar extends StatefulWidget {
     this.colorTipSize,
     this.simpleMode = true,
     this.titleWidget,
+    this.blockBorder,
   }) : super(key: key);
 
   @override
@@ -237,6 +240,7 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
             colorsets: widget.colorsets,
             borderRadius: widget.borderRadius,
             onClick: widget.onClick,
+            border: widget.blockBorder,
           ),
           if (widget.showColorTip == true && !widget.simpleMode)
             HeatMapColorTip(

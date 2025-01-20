@@ -73,12 +73,16 @@ class HeatMapColumn extends StatelessWidget {
   // current week.
   final int numDays;
 
+  // The border for the heatmap container.
+  final BoxBorder? border;
+
   HeatMapColumn({
     Key? key,
     required this.startDate,
     required this.endDate,
     required this.colorMode,
     required this.numDays,
+    this.border,
     this.size,
     this.fontSize,
     this.defaultColor,
@@ -104,6 +108,7 @@ class HeatMapColumn extends StatelessWidget {
             margin: margin,
             onClick: onClick,
             showText: showText,
+            border: border,
             // If datasets has DateTime key which is equal to this HeatMapContainer's date,
             // we have to color the matched HeatMapContainer.
             //

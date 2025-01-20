@@ -87,6 +87,9 @@ class HeatMap extends StatefulWidget {
   /// The double value of [HeatMapColorTip]'s tip container's size.
   final double? colorTipSize;
 
+  /// The border for the heatmap block.
+  final BoxBorder? blockBorder;
+
   const HeatMap({
     Key? key,
     required this.colorsets,
@@ -107,6 +110,7 @@ class HeatMap extends StatefulWidget {
     this.colorTipHelper,
     this.colorTipCount,
     this.colorTipSize,
+    this.blockBorder,
   }) : super(key: key);
 
   @override
@@ -146,6 +150,7 @@ class _HeatMap extends State<HeatMap> {
           onClick: widget.onClick,
           margin: widget.margin,
           showText: widget.showText,
+          border: widget.blockBorder,
         )),
 
         // Show HeatMapColorTip if showColorTip is true.

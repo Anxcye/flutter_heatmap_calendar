@@ -59,6 +59,7 @@ class _HeatMapCalendarExample extends State<HeatMapCalendarExample> {
 
                 // HeatMapCalendar
                 child: HeatMapCalendar(
+                  blockBorder: Border.all(color: Colors.black),
                   flexible: true,
                   datasets: heatMapDatasets,
                   colorMode:
